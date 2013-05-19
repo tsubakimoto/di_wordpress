@@ -1,22 +1,4 @@
-﻿<!doctype html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<title>はじめてのWordPress</title>
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div id="header" class="container">
-		<h1>
-			<a href="">はじめてのWordPress</a>
-			<ul class="menu">
-				<li><a href="">menu</a></li>
-				<li><a href="">menu</a></li>
-				<li><a href="">menu</a></li>
-			</ul>
-		</h1>
-	</div><!-- /header -->
+<?php get_header(); ?>
 	<div id="main" class="container">
 		<div id="posts">
 			<div id="post">
@@ -40,19 +22,6 @@
 				<div class="next">next</div>
 			</div>
 		</div><!-- /posts -->
-		<div id="sidebar">
-			<div class="widget">
-				<h3>カテゴリ</h3>
-				<ul>
-					<li><a href="">item</a></li>
-					<li><a href="">item</a></li>
-					<li><a href="">item</a></li>
-				</ul>
-			</div>
-		</div><!-- /sidebar -->
+		<?php get_sidebar(); ?>
 	</div><!-- /main -->
-	<div id="footer" class="container">
-		footer
-	</div><!-- /footer -->
-</body>
-</html>
+<?php get_footer(); ?>
