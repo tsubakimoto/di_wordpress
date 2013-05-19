@@ -1,25 +1,47 @@
-<?php get_header(); ?>
+﻿<?php get_header(); ?>
 	<div id="main" class="container">
 		<div id="posts">
+			<?php
+			if (have_posts()) :
+				while (have_posts()) :
+					the_post();
+			?>
+			
 			<div id="post">
 				<div class="post-header">
-					<h2><a href="">タイトル</a></h2>
+					<h2><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					<div class="post-meta">
-						2013年5月19日 【カテゴリ】
+						<?php echo get_the_date(); ?> 【<?php the_category(', '); ?>】
 					</div>
 				</div>
 				<div class="post-content">
 					<div class="post-image">
-						<img src="img/noimage.png" width="100" height="100">
+						<?php if (has_post_thumbnail()): ?>
+						<?php the_post_thumbnail(array(100, 100)); ?>
+						<?php else: ?>
+						<img src="<?php echo get_template_directory_uri(); ?>/img/noimage.png" width="100" height="100">
+						<?php endif; ?>
 					</div>
 					<div class="post-body">
-						<p>本文。本文。本文。本文。本文。本文。本文。本文。本文。本文。本文。本文。本文。</p>
+						<?php the_excerpt(); ?>
 					</div>
 				</div>
 			</div><!-- /post -->
+			
+			<?php
+				endwhile;
+			else:
+			?>
+			
+			p{記事はありません。}
+			
+			<?php
+			endif;
+			?>
+			
 			<div class="navigation">
-				<div class="prev">prev</div>
-				<div class="next">next</div>
+				<div class="prev"><?php previous_posts_link(); ?></div>
+				<div class="next"><?php next_posts_link(); ?></div>
 			</div>
 		</div><!-- /posts -->
 		<?php get_sidebar(); ?>
